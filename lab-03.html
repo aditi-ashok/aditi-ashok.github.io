@@ -65,11 +65,6 @@
       </div>
 
       <div class="form-group">
-        <label for="word">Funny Word</label>
-        <input type="text" class="form-control" id="word" name="word" placeholder="Add a funny word">
-      </div>
-
-      <div class="form-group">
         <label for="liquid">Type of Liquid</label>
         <input type="text" class="form-control" id="liquid" name="liquid" placeholder="Add a liquid">
       </div>
@@ -121,7 +116,6 @@
     console.log(document.getElementById('adj1').value);
     console.log(document.getElementById('plnoun1').value);
     console.log(document.getElementById('plnoun2').value);
-    console.log(document.getElementById('word').value);
     console.log(document.getElementById('liquid').value);
     console.log(document.getElementById('adj2').value);
     console.log(document.getElementById('noun1').value);
@@ -140,7 +134,6 @@
     document.getElementById('adj1').value = urlParams.get('adj1');
     document.getElementById('plnoun1').value = urlParams.get('plnoun1');
     document.getElementById('plnoun2').value = urlParams.get('plnoun2');
-    document.getElementById('word').value = urlParams.get('word');
     document.getElementById('liquid').value = urlParams.get('liquid');
     document.getElementById('adj2').value = urlParams.get('adj2');
     document.getElementById('noun1').value = urlParams.get('noun1');
@@ -152,14 +145,13 @@
 
 
     //if we have all the inputs, hide the form and show the story
-    if (urlParams.get('adj1') && urlParams.get('plnoun1') && urlParams.get('plnoun2') && urlParams.get('word') && urlParams.get('liquid') && urlParams.get('adj2') && urlParams.get('noun1') && urlParams.get('verb1') && urlParams.get('plnoun3') && urlParams.get('ingverb') && urlParams.get('number')) {
+    if (urlParams.get('adj1') && urlParams.get('plnoun1') && urlParams.get('plnoun2') && urlParams.get('liquid') && urlParams.get('adj2') && urlParams.get('noun1') && urlParams.get('verb1') && urlParams.get('plnoun3') && urlParams.get('ingverb') && urlParams.get('number')) {
       document.getElementById('form').style.display = 'none';
       document.getElementById('story').innerHTML = 'Children are fascinated by ' +  urlParams.get('adj1') + 
                     ' stuff- like stories that scare the ' + urlParams.get('plnoun1') +
                     ' off them or make their ' + urlParams.get('plnoun2') +
-                    ' stand on end. Scientists say this is because being frightened causes the ' +
-                    + urlParams.get('word') +
-                    ' gland to function and puts ' + urlParams.get('liquid') +
+                    ' stand on end. Scientists say this is because being frightened causes the brain to malfunction and puts ' +
+                    + urlParams.get('liquid') +
                     ' into their blood. And everyone knows that makes kids feel ' + urlParams.get('adj2') +
                     '. When they are scared by a movie or a/an ' + urlParams.get('noun1') +
                     ', some children laugh and holler and ' + urlParams.get('verb1') +
@@ -173,7 +165,7 @@
     document.getElementById('story').innerHTML += '<br><a class="btn btn-primary" href="lab-03.html">Clear the form</a>';
 
     // Hide the clear story form link if we don't have a story.
-  if (!urlParams.get('adj1') || !urlParams.get('plnoun1') || !urlParams.get('plnoun2') || !urlParams.get('word') || !urlParams.get('liquid') || !urlParams.get('adj2') || !urlParams.get('noun1') || !urlParams.get('verb1') || !urlParams.get('plnoun3') || !urlParams.get('ingverb') || !urlParams.get('number')) {
+  if (!urlParams.get('adj1') || !urlParams.get('plnoun1') || !urlParams.get('plnoun2') || !urlParams.get('liquid') || !urlParams.get('adj2') || !urlParams.get('noun1') || !urlParams.get('verb1') || !urlParams.get('plnoun3') || !urlParams.get('ingverb') || !urlParams.get('number')) {
     document.getElementById('story').style.display = 'none';
   }
 
