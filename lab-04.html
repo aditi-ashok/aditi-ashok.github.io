@@ -26,6 +26,7 @@
           <tr>
             <th>Photo</th>
             <th>Name</th>
+            <th> Gender </th>
             <th>Address</th>
             <th> City </th>
             <th> State </th>
@@ -57,6 +58,7 @@
     let row = '<tr>';
     row += '<td><img src="' + data['picture.large'] + '"></td>';
     row += '<td>' + data['name.title'] + ' ' + data.nameFirst + ' ' + data.nameLast + '</td>';
+    row += '<td>' + data.gender + '</td>';
     row += '<td>'+ data['location.street.number'] + ' ' + data['location.street.name'] + '</td>';
     row += '<td>' + data.city + '</td>';
     row += '<td>' + data.state + '</td>';
