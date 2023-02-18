@@ -75,6 +75,7 @@
       function addTask(task) {
         taskList.push({ name: task, done: false });
         localStorage.setItem("todo", JSON.stringify(taskList));
+        document.getElementById("task-input").value = ""; 
         showTasks();
       }
   
