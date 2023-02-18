@@ -8,44 +8,49 @@
         font: 14px sans-serif;
         color: black
       } 
+
       .done {
         text-decoration: line-through;
         color: gray;
       }
+
       li {
         display: flex;
         align-items: center;
         margin-bottom: 10px;
       }
+
       /* Add styles for the buttons */
       button#add-task-button {
-        padding: 5px 10px;
-        background-color: white;
-        color: green;
+        background-color: green;
+        color: #fff;
         border: none;
+        outline: none;
         border-radius: 5px;
-        cursor: pointer;
-        margin-left: 10px;
-        font-size: x-large;
+        padding: 2px;
+        font-size: medium;
       }
 
       button#remove-task-button {
-        padding: 5px 10px;
-        background-color: white;
-        color: red;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
         float: right;
-        font-size: x-large;
+        background-color: #dc143c;
+        border: none;
+        outline: none;
+        border-radius: 7px;
+        padding: 2px 5px;
+        margin-left: 10px;
+        font-size: small;
+        font-weight: 550;
+
       }
       
       /* add styles for heading */
         h1 {
             font-size: 30px;
-            color: black;
+            color: gray;
             text-align: center;
             font: 30px sans-serif;
+            font-weight: 550;
         }
 
       input[type="text"] {
@@ -56,6 +61,7 @@
         margin-right: 10px;
       }
     </style>
+    
     <script>
       // Initialize the task list
       let taskList = [];
@@ -97,29 +103,29 @@
       function showTasks() {
         let taskHTML = "";
         for (let i = 0; i < taskList.length; i++) {
-          let taskClass = taskList[i].done ? "done" : "undone";
-          taskHTML +=
+            let taskClass = taskList[i].done ? "done" : "undone";
+            let checkedAttribute = taskList[i].done ? "checked" : ""; // add checked attribute if task is done
+            taskHTML +=
             "<li class='" +
             taskClass +
-            "'><input type='checkbox' onclick='markDone(" +
+            "'><input type='checkbox' " + checkedAttribute + " onclick='markDone(" +
             i +
             ")'>" +
             taskList[i].name +
             " <button id='remove-task-button' button onclick='removeTask(" +
             i +
-            ")'>-</button></li>";
-
+            ")'>remove</button></li>";
         }
-
         document.getElementById("task-list").innerHTML = taskHTML;
-      }
+        }
     </script>
+
   </head>
   <body onload="showTasks()">
     <h1>My To-Do List</h1>
     <input type="text" id="task-input">
     <button id='add-task-button'button onclick="addTask(document.getElementById('task-input').value)">
-      +
+      add task
     </button>
     <ul id="task-list"></ul>
   </body>
