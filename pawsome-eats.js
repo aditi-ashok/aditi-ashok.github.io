@@ -4,14 +4,15 @@ function searchDogFriendlyRestaurants() {
     var location = document.getElementById('locationInput').value;
   
     // Define Yelp API endpoint and query parameters
-    var apiUrl = 'https://api.yelp.com/v3/businesses/search';
+    var apiUrl = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
     var term = 'dog friendly';
   
     // Make Axios GET request to Yelp API
     axios.get(apiUrl, {
       params: {
         term: term,
-        location: location
+        location: location,
+        limit:10
       },
       headers: {
         Authorization: 'Bearer oRc9-C72u38kHp3pS2W7S42ezwi7n4JQIfA893O0DWRS6EMhkp8w2r6eYHJMjD87YLIiyeOPAV2dbm6qnfl-j41-tfGQMmQFpWpCdwZGWWCcRCNqA4KguDJPoeMpZHYx' 
