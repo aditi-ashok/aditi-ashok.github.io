@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Dog-Friendly Restaurants Finder</title>
+  <title>Dog Friendly Restaurants</title>
   <link rel="stylesheet" href="pawsome-eats.css">
 </head>
+
 <body>
-  <h1>Dog-Friendly Restaurants Finder</h1>
-  <div id="searchForm">
-    <label for="locationInput">Location:</label>
-    <input type="text" id="locationInput">
+  <h1>Dog Friendly Restaurants Near You</h1>
+  <div id="searchContainer">
+    <label for="locationInput">Enter your location:</label>
+    <input type="text" id="locationInput" placeholder="Address, Zip Code, or City">
     <button id="searchButton">Search</button>
   </div>
-  <div id="restaurantsList">
-    <ul id="restaurants">
-      <!-- Restaurants will be dynamically populated here -->
-    </ul>
-  </div>
+  <ul id="restaurants"></ul>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="pawsome-eats.js"></script>
 </body>
+
 </html>
