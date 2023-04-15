@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Dog Friendly Restaurants</title>
-  <link rel="stylesheet" href="pawsome-eats.css">
+    <title>Dog Friendly Restaurants</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <h1>Dog Friendly Restaurants Near You</h1>
-  <div id="searchContainer">
-    <label for="locationInput">Enter your location:</label>
-    <input type="text" id="locationInput" placeholder="Address, Zip Code, or City">
+    <h1>Dog Friendly Restaurants</h1>
+    <input type="text" id="locationInput" placeholder="Enter address, zip code, or city">
     <button id="searchButton">Search</button>
-  </div>
-  <ul id="restaurants"></ul>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="pawsome-eats.js"></script>
+    <div id="restaurantList"></div>
+    <script src="pawsome-eats.js"></script>
 </body>
-
 </html>

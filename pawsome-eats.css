@@ -1,20 +1,15 @@
 body {
     font-family: Arial, sans-serif;
-  }
-  
-  h1 {
+}
+
+h1 {
     text-align: center;
-  }
-  
-  #searchContainer {
-    text-align: center;
+}
+
+input, button {
+    margin: 10px;
+}
+
+#restaurantList {
     margin-top: 20px;
-  }
-  
- #locationInput {
-    margin-right: 10px;
-  }
-  
-#searchButton {
-    cursor: pointer;
-  }
+}
