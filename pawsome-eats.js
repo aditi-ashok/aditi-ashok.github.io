@@ -8,7 +8,6 @@ function searchDogFriendlyRestaurants() {
     var term = 'dog friendly';
     var apiKey = 'oRc9-C72u38kHp3pS2W7S42ezwi7n4JQIfA893O0DWRS6EMhkp8w2r6eYHJMjD87YLIiyeOPAV2dbm6qnfl-j41-tfGQMmQFpWpCdwZGWWCcRCNqA4KguDJPoeMpZHYx' 
 
-    
     // Make Axios GET request to Yelp API
     axios.get(apiUrl, {
       params: {
@@ -24,10 +23,22 @@ function searchDogFriendlyRestaurants() {
       // Handle successful API response
       console.log(response.data); // Access the API response data
       // Do something with the data, e.g., display results on your web page
+       // Clear previous search results
+       var restaurantList = document.getElementById('restaurantList');
+       restaurantList.innerHTML = '';
+
+       // Display results on the web page
+       var restaurants = response.data.businesses;
+       restaurants.forEach(function (restaurant) {
+           var li = document.createElement('li');
+           var text = document.createTextNode(restaurant.name);
+           li.appendChild(text);
+           restaurantList.appendChild(li);
+       });
     })
     .catch(function (error) {
       // Handle API request error
       console.error('Error fetching data from Yelp API:', error);
     });
-  }
+  } 
   
