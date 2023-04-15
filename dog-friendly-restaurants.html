@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dog-Friendly Restaurants</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="dog-friendly-restaurants.css">
+</head>
+<body>
+	<header>
+		<h1>Dog-Friendly Restaurants</h1>
+		<nav>
+			<ul>
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h2>Find a Dog-Friendly Restaurant Near You</h2>
+		<form id="search-form">
+			<label for="location">Location:</label>
+			<input type="text" id="location" name="location" required>
+			<label for="price-range">Price Range:</label>
+			<select id="price-range" name="price-range">
+				<option value="1">$</option>
+				<option value="2">$$</option>
+				<option value="3">$$$</option>
+				<option value="4">$$$$</option>
+			</select>
+			<label for="cuisine">Cuisine:</label>
+			<input type="text" id="cuisine" name="cuisine">
+			<button type="submit">Search</button>
+		</form>
+		<div id="restaurantDiv"></div>
+	</main>
+	<footer>
+		<p>&copy; 2023 Dog-Friendly Restaurants</p>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="script.js"></script>
+    <script>
+        const apiKey = 'oRc9-C72u38kHp3pS2W7S42ezwi7n4JQIfA893O0DWRS6EMhkp8w2r6eYHJMjD87YLIiyeOPAV2dbm6qnfl-j41-tfGQMmQFpWpCdwZGWWCcRCNqA4KguDJPoeMpZHYx';
+        const searchForm = document.getElementById('search-form');
+        const resultsDiv = document.getElementById('results');
+
+        searchForm.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        const location = searchForm.elements.location.value;
+        const priceRange = searchForm.elements['price-range'].value;
+        const cuisine = searchForm.elements.cuisine.value;
+        
+        const endpoint = 'https://api.yelp.com/v3/businesses/search';
+        const headers = {
+            Authorization: `Bearer ${apiKey}`
+        };
+        
+        const params = {
+            location,
+            price: priceRange,
+            categories: 'restaurants,food',
+            attributes: 'dog-friendly',
+            limit: 10
+        };
+        
+        if (cuisine) {
+            params.categories += `,${cuisine}`;
+        }
+        
+        axios.get(endpoint, { headers, params })
+            .then(response => {
+            const businesses = response.data.businesses;
+            resultsDiv.innerHTML = '';
+            
+            businesses.forEach(business => {
+                const restaurantDiv = document.createElement('div');
+                restaurantDiv.classList.add('restaurant');
+                
+                const nameHeading = document.createElement('h3');
+                nameHeading.textContent = business.name;
+                
+                const addressParagraph = document.createElement('p');
+                addressParagraph.textContent = business.location.address1;
+                
+                const phoneParagraph = document.createElement('p');
+                phoneParagraph.textContent = business.display_phone;
+                
+                restaurantDiv.appendChild(nameHeading);
+                restaurantDiv.appendChild(addressParagraph);
+                restaurantDiv.appendChild(phoneParagraph);
+                
+                resultsDiv.appendChild(restaurantDiv);
+            });
+            })
+            .catch(error => {
+            console.log(error);
+            });
+        });
+
+</script>
+</body>
+</html>
