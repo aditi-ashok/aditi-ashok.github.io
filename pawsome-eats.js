@@ -1,14 +1,15 @@
-// Fetch dog-friendly restaurants using Yelp API with user input location
+// Fetch dog-friendly restaurants using the Yelp API with user input location
 function fetchDogFriendlyRestaurants() {
     const locationInput = document.getElementById('locationInput').value;
-    console.log("location input: ", locationInput)
   
-    const url = `https://api.yelp.com/v3/businesses/search?term=dog+friendly&location=${locationInput}`;
-  
-    // Make an AJAX request using Axios
-    axios.get(url, {
+    // Make an Axios request to the Yelp API
+    axios.get(`https://api.yelp.com/v3/businesses/search`, {
       headers: {
-        'Authorization': 'Bearer oRc9-C72u38kHp3pS2W7S42ezwi7n4JQIfA893O0DWRS6EMhkp8w2r6eYHJMjD87YLIiyeOPAV2dbm6qnfl-j41-tfGQMmQFpWpCdwZGWWCcRCNqA4KguDJPoeMpZHYx'
+        'Authorization': 'Bearer oRc9-C72u38kHp3pS2W7S42ezwi7n4JQIfA893O0DWRS6EMhkp8w2r6eYHJMjD87YLIiyeOPAV2dbm6qnfl-j41-tfGQMmQFpWpCdwZGWWCcRCNqA4KguDJPoeMpZHYx' 
+      },
+      params: {
+        term: 'dog friendly',
+        location: locationInput
       }
     })
       .then(response => {
@@ -16,22 +17,9 @@ function fetchDogFriendlyRestaurants() {
         const restaurantsList = document.getElementById('restaurants');
         restaurantsList.innerHTML = '';
         data.businesses.forEach(restaurant => {
+          // Render restaurant items as desired
           const restaurantItem = document.createElement('li');
-          restaurantItem.classList.add('restaurant-item');
-  
-          const restaurantName = document.createElement('h3');
-          restaurantName.textContent = restaurant.name;
-  
-          const restaurantAddress = document.createElement('p');
-          restaurantAddress.textContent = restaurant.location.address1;
-  
-          const restaurantPhone = document.createElement('p');
-          restaurantPhone.textContent = `Phone: ${restaurant.phone}`;
-  
-          restaurantItem.appendChild(restaurantName);
-          restaurantItem.appendChild(restaurantAddress);
-          restaurantItem.appendChild(restaurantPhone);
-  
+          restaurantItem.textContent = restaurant.name;
           restaurantsList.appendChild(restaurantItem);
         });
       })
