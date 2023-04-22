@@ -2,19 +2,25 @@
 <html>
 
 <head>
-  <title>Pawsome Eats</title>
-  <link rel="stylesheet" href="pawsome-eats.css">
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="pawsome-eats.js"></script>
+    <title>Pawsome Eats</title>
+    <link rel="stylesheet" href="pawsome-eats.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="pawsome-eats.js"></script>
 </head>
 
-<body>
-    <h1>Pawsome Eats</h1>
-    <h4>Search below to find dog friendly restaurants near you!</h4>
-    <label for="locationInput">Location: </label>
-    <input type="text" id="locationInput" />
-    <button onclick="searchDogFriendlyRestaurants()">Search</button>
-    <ul id="restaurantList"></ul>
+<body style="background-image:url(background.jpg); background-size: cover;">
+    <div id="container">
+        <h1>Pawsome Eats</h1>
+        <h4>Pawsome Eats is here to show you all the best dog friendly spots in your neighborhood.
+            To get started, just search below by address, city / state, or zip code.
+        </h4>
+        <div id="searchContainer">
+            <label for="locationInput">Location: </label>
+            <input type="text" id="locationInput" />
+            <button onclick="searchDogFriendlyRestaurants()">Search</button>
+        </div>
+        <ul id="restaurantList"></ul>
+    </div>
 </body>
 
 </html>

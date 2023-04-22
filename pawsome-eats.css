@@ -1,44 +1,91 @@
 body {
-    font-family: Arial, sans-serif;
-  }
-  
-  h1 {
-    text-align: center;
-  }
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  h4 {
-    text-align: center;
-  }
-  
-  #searchContainer {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  #locationInput {
-    margin-right: 10px;
-  }
-  
-  #searchButton {
-    cursor: pointer;
-  }
-  
-  #restaurantList {
-    list-style-type: none;
-    padding: 0;
+#container {
+  max-width: 600px;
+  margin: 100px auto;
+  background-color: #ffffffc3;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+}
+
+h4 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  color: #555;
+  margin-top: 10px;
+}
+
+#searchContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  outline: none;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#restaurantList {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
 }
 
 .restaurant-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .restaurant-item h2 {
-    margin: 0;
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .restaurant-item p {
-    margin: 5px 0;
+  margin: 5px 0;
+  font-size: 16px;
+  color: #666;
+}
+
+#restaurantList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }

@@ -5,7 +5,7 @@ function searchDogFriendlyRestaurants() {
   
     // Define Yelp API endpoint and query parameters
     var apiUrl = 'https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search';
-    var term = 'dog friendly';
+    var term = 'dog+friendly';
     var apiKey = 'oRc9-C72u38kHp3pS2W7S42ezwi7n4JQIfA893O0DWRS6EMhkp8w2r6eYHJMjD87YLIiyeOPAV2dbm6qnfl-j41-tfGQMmQFpWpCdwZGWWCcRCNqA4KguDJPoeMpZHYx' 
 
     // Make Axios GET request to Yelp API
@@ -41,8 +41,22 @@ function searchDogFriendlyRestaurants() {
             var addressText = document.createTextNode(restaurant.location.address1 + ', ' + restaurant.location.city + ', ' + restaurant.location.state + ' ' + restaurant.location.zip_code);
             addressElement.appendChild(addressText);
 
+            var categoryElement = document.createElement('p');
+            var categoryText = document.createTextNode(
+              'Category: ' + restaurant.categories[0].title // Retrieve the category title from the API response
+            );
+            categoryElement.appendChild(categoryText);
+          
+
+            var linkElement = document.createElement('a'); 
+            linkElement.href = restaurant.url; 
+            linkElement.target = '_blank'; 
+            linkElement.textContent = 'Visit Website'; 
+
             restaurantItem.appendChild(nameElement);
             restaurantItem.appendChild(addressElement);
+            restaurantItem.appendChild(categoryElement);
+            restaurantItem.appendChild(linkElement);
             restaurantList.appendChild(restaurantItem);
         
         });
@@ -53,3 +67,11 @@ function searchDogFriendlyRestaurants() {
     });
   } 
   
+
+  /*
+              var linkElement = document.createElement('a');
+           //var linkText = document.createTextNode(restaurant.url);
+            //linkElement.title = "visit website";
+            //linkElement.href = document.createTextNode(restaurant.url);
+            linkElement.appendChild(linkText);
+            */
